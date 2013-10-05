@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.doosoft.dbdeploy</groupId>
+	<artifactId>doosoft-dbdeploy</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>dbdeploy</name>
+
+	<build>
+		<plugins>
+			<!-- MYSQL -->
+			<plugin>
+				<groupId>com.dbdeploy</groupId>
+				<artifactId>maven-dbdeploy-plugin</artifactId>
+				<version>3.0M3</version>
+				<configuration>
+					<changeLogTableName>${dbdeploy.changeLogTableName}</changeLogTableName>
+					<scriptdirectory>${dbdeploy.scriptdirectory}</scriptdirectory>
+					<driver>${dbdeploy.driver}</driver>
+					<url>${dbdeploy.url}</url>
+					<userid>${dbdeploy.userid}</userid>
+					<password>${dbdeploy.password}</password>
+					<dbms>${dbdeploy.dbms}</dbms>
+					<delimiter>${dbdeploy.delimiter}</delimiter>
+					<delimiterType>${dbdeploy.delimiterType}</delimiterType>
+					<outputfile>target/${dbdeploy.outputfile}</outputfile>
+					<undoOutputfile>target/${dbdeploy.undoOutputfile}</undoOutputfile>
+				</configuration>
+
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.22</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
