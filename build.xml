@@ -20,7 +20,7 @@
 		<property name="dbdeploy.scriptdirectory" value="${dbdeploy.scriptdirectory.ddl}" />
 		<exec executable="${mvn.executable}">
 			<arg
-				line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType}" />
+				line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms}" />
 		</exec>
 	</target>
 
@@ -30,7 +30,7 @@
 		<property name="dbdeploy.scriptdirectory" value="${dbdeploy.scriptdirectory.dml}" />
 		<exec executable="${mvn.executable}">
 			<arg
-				line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType}" />
+				line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms}" />
 		</exec>
 	</target>
 	
@@ -49,7 +49,7 @@
 		<property name="dbdeploy.undoOutputfile" value="${dbdeploy.undoOutputfile.ddl}" />
 		<exec executable="${mvn.executable}">
 			<arg
-				line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType}" />
+				line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.outputfile=${dbdeploy.outputfile} -Ddbdeploy.undoOutputfile=${dbdeploy.undoOutputfile}" />
 		</exec>
 	</target>
 
@@ -61,7 +61,7 @@
 		<property name="dbdeploy.undoOutputfile" value="${dbdeploy.undoOutputfile.dml}" />
 		<exec executable="${mvn.executable}">
 			<arg
-				line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType}" />
+				line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.outputfile=${dbdeploy.outputfile} -Ddbdeploy.undoOutputfile=${dbdeploy.undoOutputfile}" />
 		</exec>
 	</target>
 
@@ -89,17 +89,6 @@
 			password="${dbdeploy.password}" onerror="abort">
 			<classpath refid="master-classpath" />
 			<transaction src="target/apply.sql" />
-		</sql>
-	</target>
-
-	<target name="rollback_database">
-		<antcall target="create_changelog_tables" />
-		<antcall target="mvn_dbdeploy_db-scripts_ddl" />
-		<antcall target="mvn_dbdeploy_db-scripts_dml" />
-		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}"
-			password="${dbdeploy.password}" onerror="abort">
-			<classpath refid="master-classpath" />
-			<transaction src="target/undo.sql" />
 		</sql>
 	</target>
 
