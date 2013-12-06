@@ -91,9 +91,8 @@
 			<transaction src="target/apply.sql" />
 		</sql>
 	</target>
-<!--
-	<target name="rollback_database">
-		<antcall target="create_changelog_tables" />
+
+	<!--<target name="rollback_database">
 		<antcall target="mvn_dbdeploy_db-scripts_ddl" />
 		<antcall target="mvn_dbdeploy_db-scripts_dml" />
 		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}"
@@ -101,6 +100,6 @@
 			<classpath refid="master-classpath" />
 			<transaction src="target/undo.sql" />
 		</sql>
-	</target>
--->
+	</target>-->
+
 </project>

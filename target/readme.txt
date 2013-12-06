@@ -1,5 +1,5 @@
 This folder will contain:
-- apply-ddl.sql
-- undo-ddl.sql
-- apply-dml.sql
-- undo-dml.sql
+- apply-version-ddl.sql
+- undo-version-ddl.sql
+- apply-version-dml.sql
+- undo-version-dml.sql
