@@ -19,8 +19,12 @@
 		<property name="dbdeploy.changeLogTableName" value="${dbdeploy.changeLogTableName.ddl}" />
 		<property name="dbdeploy.scriptdirectory" value="${dbdeploy.scriptdirectory.ddl}" />
 		<exec executable="${mvn.executable}">
+<<<<<<< HEAD
 			<arg
 				line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms}" />
+=======
+			<arg line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType}" />
+>>>>>>> origin/master
 		</exec>
 	</target>
 
@@ -29,46 +33,61 @@
 		<property name="dbdeploy.changeLogTableName" value="${dbdeploy.changeLogTableName.dml}" />
 		<property name="dbdeploy.scriptdirectory" value="${dbdeploy.scriptdirectory.dml}" />
 		<exec executable="${mvn.executable}">
+<<<<<<< HEAD
 			<arg
 				line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms}" />
+=======
+			<arg line="dbdeploy:update -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType}" />
+>>>>>>> origin/master
 		</exec>
 	</target>
-	
+
 	<target name="clean_target">
-		<echo message="Cleaning target directory..."></echo>
+		<echo message="Cleaning target directory..." />
 		<delete verbose="true">
-			<fileset dir="target" includes="**/*.sql"/>
+			<fileset dir="target" includes="**/*.sql" />
 		</delete>
 	</target>
-	
+
 	<target name="mvn_dbdeploy_db-scripts_ddl">
 		<echo message="Generating DDL scripts..." />
+		<property name="dbdeploy.outputfile" value="${dbdeploy.outputfile.ddl}" />
+		<property name="dbdeploy.undoOutputfile" value="${dbdeploy.undoOutputfile.ddl}" />
 		<property name="dbdeploy.changeLogTableName" value="${dbdeploy.changeLogTableName.ddl}" />
 		<property name="dbdeploy.scriptdirectory" value="${dbdeploy.scriptdirectory.ddl}" />
 		<property name="dbdeploy.outputfile" value="${dbdeploy.outputfile.ddl}" />
 		<property name="dbdeploy.undoOutputfile" value="${dbdeploy.undoOutputfile.ddl}" />
 		<exec executable="${mvn.executable}">
+<<<<<<< HEAD
 			<arg
 				line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.outputfile=${dbdeploy.outputfile} -Ddbdeploy.undoOutputfile=${dbdeploy.undoOutputfile}" />
+=======
+			<arg line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType} -Ddbdeploy.outputfile=${dbdeploy.outputfile} -Ddbdeploy.undoOutputfile=${dbdeploy.undoOutputfile}" />
+>>>>>>> origin/master
 		</exec>
 	</target>
 
 	<target name="mvn_dbdeploy_db-scripts_dml">
 		<echo message="Generating DML scripts..." />
+		<property name="dbdeploy.outputfile" value="${dbdeploy.outputfile.dml}" />
+		<property name="dbdeploy.undoOutputfile" value="${dbdeploy.undoOutputfile.dml}" />
 		<property name="dbdeploy.changeLogTableName" value="${dbdeploy.changeLogTableName.dml}" />
 		<property name="dbdeploy.scriptdirectory" value="${dbdeploy.scriptdirectory.dml}" />
 		<property name="dbdeploy.outputfile" value="${dbdeploy.outputfile.dml}" />
 		<property name="dbdeploy.undoOutputfile" value="${dbdeploy.undoOutputfile.dml}" />
 		<exec executable="${mvn.executable}">
+<<<<<<< HEAD
 			<arg
 				line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.outputfile=${dbdeploy.outputfile} -Ddbdeploy.undoOutputfile=${dbdeploy.undoOutputfile}" />
+=======
+			<arg line="dbdeploy:db-scripts -Ddbdeploy.changeLogTableName=${dbdeploy.changeLogTableName} -Ddbdeploy.scriptdirectory=${dbdeploy.scriptdirectory} -Ddbdeploy.driver=${dbdeploy.driver} -Ddbdeploy.url=${dbdeploy.url} -Ddbdeploy.userid=${dbdeploy.userid} -Ddbdeploy.password=${dbdeploy.password} -Ddbdeploy.dbms=${dbdeploy.dbms} -Ddbdeploy.delimiter=${dbdeploy.delimiter} -Ddbdeploy.delimiterType=${dbdeploy.delimiterType} -Ddbdeploy.outputfile=${dbdeploy.outputfile} -Ddbdeploy.undoOutputfile=${dbdeploy.undoOutputfile}" />
+>>>>>>> origin/master
 		</exec>
 	</target>
 
 	<target name="create_changelog_tables">
 		<echo message="Creating changelogs tables..." />
-		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}"
-			password="${dbdeploy.password}" onerror="abort">
+		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}" password="${dbdeploy.password}" onerror="abort">
 			<classpath refid="master-classpath" />
 			<transaction src="script/createDDLSchemaVersionTable.mysql.sql" />
 			<transaction src="script/createDMLSchemaVersionTable.mysql.sql" />
@@ -85,11 +104,24 @@
 		<antcall target="create_changelog_tables" />
 		<antcall target="mvn_dbdeploy_db-scripts_ddl" />
 		<antcall target="mvn_dbdeploy_db-scripts_dml" />
-		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}"
-			password="${dbdeploy.password}" onerror="abort">
+		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}" password="${dbdeploy.password}" onerror="abort">
 			<classpath refid="master-classpath" />
-			<transaction src="target/apply.sql" />
+			<transaction src="target/apply-ddl.sql" />
+			<transaction src="target/apply-dml.sql" />
 		</sql>
 	</target>
 
+<<<<<<< HEAD
+=======
+	<target name="rollback_database">
+		<antcall target="mvn_dbdeploy_db-scripts_ddl" />
+		<antcall target="mvn_dbdeploy_db-scripts_dml" />
+		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}" password="${dbdeploy.password}" onerror="abort">
+			<classpath refid="master-classpath" />
+			<transaction src="target/undo-ddl.sql" />
+			<transaction src="target/undo-dml.sql" />
+		</sql>
+	</target>
+
+>>>>>>> origin/master
 </project>
