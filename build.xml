@@ -91,7 +91,7 @@
 		</sql>
 	</target>
 
-	<target name="rollback_database">
+	<!--<target name="rollback_database">
 		<antcall target="mvn_dbdeploy_db-scripts_ddl" />
 		<antcall target="mvn_dbdeploy_db-scripts_dml" />
 		<sql driver="${dbdeploy.driver}" url="${dbdeploy.url}" userid="${dbdeploy.userid}" password="${dbdeploy.password}" onerror="abort">
@@ -99,6 +99,6 @@
 			<transaction src="target/undo-ddl.sql" />
 			<transaction src="target/undo-dml.sql" />
 		</sql>
-	</target>
+	</target>-->
 
 </project>
